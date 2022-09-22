@@ -1,15 +1,8 @@
-import { photographerFactory } from "./factories/photographer";
+import { photographerFactory } from "./factories/photographerFactory";
 import { getPhotographers } from "./services/api";
-import { getMediaPhotographers } from "./services/api";
 
-// getPhotographers();
-// getMediaPhotographers();
-    // Penser à remplacer par les données récupérées dans le json
-    const photographers = getPhotographers();
-    console.log(photographers)
-    // // et bien retourner le tableau photographers seulement une fois
-    // return ({
-    //     photographers: [...photographers, ...photographers, ...photographers]})
+
+
 
 
 async function displayData(photographers) {

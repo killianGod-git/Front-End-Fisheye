@@ -16,7 +16,7 @@
   \*******************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _services_api__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../services/api */ \"./src/scripts/services/api.js\");\n//Mettre le code JavaScript lié à la page photographer.html\r\n\n\n//# sourceURL=webpack://front-end-fisheye/./src/scripts/pages/photographer.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _services_api__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../services/api */ \"./src/scripts/services/api.js\");\n//Mettre le code JavaScript lié à la page photographer.html\r\n\r\n\r\nconsole.log('test')\r\nconsole.log((0,_services_api__WEBPACK_IMPORTED_MODULE_0__.getMediaPhotographers)());\n\n//# sourceURL=webpack://front-end-fisheye/./src/scripts/pages/photographer.js?");
 
 /***/ }),
 
