@@ -13,10 +13,11 @@ export async function getPhotographers() {
     return dataPhotofraphers
   }
 export async function getMediaPhotographers(){
-    fetch("./data/photographers.json")
+    const dataPhotofraphersPage = await fetch("./data/photographers.json")
     .then(resmedia => resmedia.json())
     .then(resmedia => {
         console.log(resmedia.media)
         return resmedia.media
     })
+    return dataPhotofraphersPage
 }
