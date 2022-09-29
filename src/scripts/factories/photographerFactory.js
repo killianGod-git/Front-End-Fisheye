@@ -16,5 +16,5 @@ export function photographerFactory(data) {
         photographerCard.innerHTML = card;
         return photographerCard;
     }
-    return  getUserCardDOM 
+    return {  getUserCardDOM }
 }
