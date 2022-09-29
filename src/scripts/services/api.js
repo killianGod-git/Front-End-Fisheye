@@ -3,21 +3,20 @@
 // requete photographes
 // requete media 
 //fonction return un photographe
-export async function getPhotographers() {
-   const dataPhotofraphers = await fetch("./data/photographers.json")
+async function getData(){
+    const data = await fetch("./data/photographers.json")
     .then(res => res.json())
     .then(res => {
-
-        return res.photographers
+        return res
     })
-    return dataPhotofraphers
-  }
-export async function getMediaPhotographers(){
-    const dataPhotofraphersPage = await fetch("./data/photographers.json")
-    .then(resmedia => resmedia.json())
-    .then(resmedia => {
-        console.log(resmedia.media)
-        return resmedia.media
-    })
-    return dataPhotofraphersPage
+    return data
 }
+export async function getPhotographers() {
+   const dataPhotofraphers = await getData()
+    return dataPhotofraphers.photographers
+  }
+export async function getMediasPhotographer(photographerId){
+    const dataPhotofraphersPage = await getData()
+    return dataPhotofraphersPage.media
+}
+
