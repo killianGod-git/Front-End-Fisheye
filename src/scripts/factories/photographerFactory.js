@@ -4,17 +4,17 @@ export function photographerFactory(data) {
     const picture = `assets/photographers/${portrait}`;
 
     function getUserCardDOM() {
-        const photographerCard = document.createElement('article'); 
        const card = `
+       <article>
             <a href="photographer.html?id=${id}" aria-label="${name}">
                 <img src="${picture}" alt="${name}">
                 <h2> ${name} </h2>
             </a>
             <h3> ${city} ${country}</h3>
             <h4> ${tagline} </h4>
-            <span> ${price} €/jours </span>`;
-        photographerCard.innerHTML = card;
-        return photographerCard;
+            <span> ${price} €/jours </span>
+        </article>`;
+        return card;
     }
     return {  getUserCardDOM }
 }
