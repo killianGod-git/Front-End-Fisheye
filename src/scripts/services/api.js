@@ -15,17 +15,13 @@ export async function getPhotographers() {
    const dataPhotofraphers = await getData()
     return dataPhotofraphers.photographers
   }
-export async function getOnePhotograph(photographerId){
-    const dataPhotofraph = await getData();
-    let photographers = dataPhotofraph.photographers
-    let filterPhotograph = photographers.filter( photographers => photographers.id === photographerId)
-    console.log(filterPhotograph);
-    return filterPhotograph;
-}
+
 export async function getMediasPhotographer(photographerId){
     const dataPhotofraphersPage = await getData();
     let mediaPhotographers = dataPhotofraphersPage.media;
-    let filteredMediaById = mediaPhotographers.filter( mediaPhotographers => mediaPhotographers.photographerId === photographerId );
-    return filteredMediaById;
+    let medias = mediaPhotographers.filter( mediaPhotographers => mediaPhotographers.photographerId === photographerId );
+    let photographers = dataPhotofraphersPage.photographers;
+    let photograph = photographers.filter( photographers => photographers.id === photographerId);
+    return {medias , photograph};
 }
 

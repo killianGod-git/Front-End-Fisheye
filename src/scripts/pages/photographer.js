@@ -1,20 +1,17 @@
 //Mettre le code JavaScript lié à la page photographer.html
 import { getMediasPhotographer } from "../services/api";
-import { getOnePhotograph } from "../services/api";
 import { photographPageFactory } from "../factories/photographerPageFactory";
-
-
-
 
 async function displayHeaderData(){
     const photographHeader = document.querySelector(".photograph-header");
-    const photograph = await getOnePhotograph(getUrlIdParameter());
+    const {medias , photograph} = await getMediasPhotographer(getUrlIdParameter());
     const photographModel = photographPageFactory(photograph);
     const displayPhotographHeader = photographModel.displayHeaderPhotographer;
     photographHeader.innerHTML += displayPhotographHeader;
+    galeryMediaPhotograph(medias);
 };
-async function galeryMediaPhotograph(){
-    const media = await getMediasPhotographer(getUrlIdParameter());
+
+async function galeryMediaPhotograph(media){
     const mediaGalery = media;
     console.log(mediaGalery);
 };
@@ -26,4 +23,3 @@ function getUrlIdParameter(){
     return Number.parseInt(id);
 };
 displayHeaderData();
-galeryMediaPhotograph();
