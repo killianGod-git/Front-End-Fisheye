@@ -1,7 +1,7 @@
 import PhotographModel from "../models/photograph"
 import Image from "../models/image"
 import Video from "../models/video"
-export default class PhotographHeaderFactory{
+export default class PhotographerPageFactory{
     constructor (data , type){
         if (type === "photograph"){
             return new PhotographModel(data)

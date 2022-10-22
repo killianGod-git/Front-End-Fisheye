@@ -1,17 +1,15 @@
 //Mettre le code JavaScript lié à la page photographer.html
 import { getMediasPhotographer } from "../services/api";
-import PhotographHeaderFactory from "../factories/photographerPageFactory";
-import PhotographHeaderTemplate  from "../templates/photographTemplate";
+import PhotographerPageFactory from "../factories/photographerPageFactory";
 import  PhotographModel  from "../models/photograph";
 
 
 async function displayHeaderData(){
     const photographHeader = document.querySelector(".photograph-header");
     const {medias , photograph} = await getMediasPhotographer(getUrlIdParameter());
-    const photographModel2 = new PhotographHeaderFactory(photograph, "photograph")
-    // const displayPhotographHeader = photographModel2.displayHeaderPhotographer();
-    console.log(photographModel2);
-    photographHeader.innerHTML += displayPhotographHeader;
+    const newPhotograph = new PhotographerPageFactory(photograph, "photograph")
+    console.log(photograph);
+    photographHeader.innerHTML += newPhotograph.renderHeader()
     galeryMediaPhotograph(medias);
 };
 

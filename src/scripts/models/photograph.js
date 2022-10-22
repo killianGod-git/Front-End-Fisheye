@@ -8,26 +8,22 @@ export default class PhotographModel{
         this.price = data.price
         this.portrait = data.portrait
     }
-    get name(){
-        return this.name
-    }
-    get id(){
-        return this.id
-    }
-    get city(){
-        return this.city
-    }
-    get country(){
-        return this.country
-    }
-    get tagline(){
-        return this.tagline
-    }
-    get price(){
-        return this.price
-    }
-    get portrait(){
-        return `./assets/photographers/${this.portrait} `
+    renderHeader(){
+        const headerContent = `
+        <div>
+            <h1> ${this.name} </h1>
+            <h2> ${this.city} ${this.country}</h2>
+            <h3> ${this.tagline} </h3>
+        </div>
+        <div>
+            <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+        </div>
+        <div>
+            <img src="${this.portrait}" alt="${this.name}">
+        </div>
+        `
+
+        return headerContent
     }
 
 }
