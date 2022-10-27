@@ -4,22 +4,22 @@ export default class PhotographModel{
         this.id = data.id  
         this.city = data.city
         this.country = data.country
-        this.tagline = data.likes 
+        this.tagline = data.tagline 
         this.price = data.price
         this.portrait = data.portrait
     }
     renderHeader(){
         const headerContent = `
-        <div>
-            <h1> ${this.name} </h1>
-            <h2> ${this.city} ${this.country}</h2>
-            <h3> ${this.tagline} </h3>
+        <div class="photograph-information">
+            <h1 class="name"> ${this.name} </h1>
+            <h2 class="location"> ${this.city} ${this.country}</h2>
+            <h3 class="tagline"> ${this.tagline} </h3>
         </div>
-        <div>
+        <div class="photograph-modal">
             <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
         </div>
-        <div>
-            <img src="${this.portrait}" alt="${this.name}">
+        <div class="photograph-portrait">
+            <img class="portrait" src="./assets/photographers/portrait/${this.portrait}" alt="${this.name}">
         </div>
         `
 

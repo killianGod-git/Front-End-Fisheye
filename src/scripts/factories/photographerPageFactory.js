@@ -1,6 +1,4 @@
-import PhotographModel from "../models/photograph"
-import Image from "../models/image"
-import Video from "../models/video"
+import PhotographModel from "../models/photographModel"
 export default class PhotographerPageFactory{
     constructor (data , type){
         if (type === "photograph"){
@@ -11,16 +9,4 @@ export default class PhotographerPageFactory{
         }
     }
 }
-export class PhotographGaleryFactory{
-    constructor (data, type){
-        if (type === "image"){
-            return new Image(data)
-        }
-        else if(type === "video"){
-            return new Video(data)
-        }
-        else{
-            throw 'type inconnu'
-        }
-    }
-}
+

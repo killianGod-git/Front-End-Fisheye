@@ -1,21 +1,29 @@
 //Mettre le code JavaScript lié à la page photographer.html
 import { getMediasPhotographer } from "../services/api";
 import PhotographerPageFactory from "../factories/photographerPageFactory";
-import  PhotographModel  from "../models/photograph";
+import PhotographGaleryFactory from '../factories/PhotographGaleryFactory';
 
 
 async function displayHeaderData(){
     const photographHeader = document.querySelector(".photograph-header");
     const {medias , photograph} = await getMediasPhotographer(getUrlIdParameter());
     const newPhotograph = new PhotographerPageFactory(photograph, "photograph")
-    console.log(photograph);
     photographHeader.innerHTML += newPhotograph.renderHeader()
     galeryMediaPhotograph(medias);
 };
 
-async function galeryMediaPhotograph(media){
-    const mediaGalery = media;
-    console.log(mediaGalery);
+async function galeryMediaPhotograph(medias){
+    medias.forEach((media) => {
+        const galeryContainer = document.querySelector(".galery-container");
+        if (media['video']){
+            const galeryElement = new PhotographGaleryFactory(media, "video")
+            galeryContainer.innerHTML += galeryElement.renderGalery()
+        } else if (media['image']){
+            const galeryElement = new PhotographGaleryFactory(media, "image")
+            galeryContainer.innerHTML += galeryElement.renderGalery()
+        }
+
+    });
 };
 
 function getUrlIdParameter(){

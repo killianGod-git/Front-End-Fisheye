@@ -4,4 +4,20 @@ export default class Video extends Media{
         super(data)
         this.video = data.video
     }
+    renderGalery(){
+        const singleGaleryElement = `
+        <article>
+            <div class="media">
+                <video>
+                    <source src="./assets/photographers/${this.photographerId}/${this.video}" type="video/mp4">
+                </video>
+            </div>
+            <div class="media-information" >
+                <p> ${this.title}</p>
+                <p> ${this.likes}</p>
+            </div>
+        </article>
+        `
+        return singleGaleryElement
+    }
 } 
