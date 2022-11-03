@@ -19,7 +19,25 @@
       <div class="galery-container"></div>
     </main>
     <div id="contact_modal">
-			
+			<div class="modal">
+				<header>
+          <h2>Contactez-moi</h2>
+          <img src="assets/icons/close.svg" onclick="closeModal()" />
+        </header>
+				<form>
+					<div>
+						<label>Prénom</label>
+						<input type="text" />
+            <label>Nom</label>
+						<input type="text" />
+            <label>Email</label>
+						<input type="email"/>
+            <label>Votre message</label>
+						<textarea name="message" id="message" cols="100" rows="10"></textarea>
+					</div>
+          <button class="contact_button">Envoyer</button>
+				</form>
+			</div>
 		</div>
     <div class="photographer_section"></div>
     <script src="./src/dist/photographer.bundle.js"></script>
