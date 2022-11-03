@@ -9,7 +9,7 @@ export default class Video extends Media{
         <article>
             <div class="media">
                 <video>
-                    <source src="./assets/photographers/${this.photographerId}/${this.video}" type="video/mp4">
+                    <source src="${this.url}/${this.video}" type="video/mp4">
                 </video>
             </div>
             <div class="media-information" >

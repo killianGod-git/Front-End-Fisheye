@@ -8,7 +8,7 @@ export default class Image extends Media{
         const singleGaleryElement = `
         <article>
             <div class="media">
-                <img  src="./assets/photographers/${this.photographerId}/${this.image}" alt="${this.title}">
+                <img  src="${this.url}/${this.image}" alt="${this.title}">
             </div>
             <div class="media-information">
                 <p> ${this.title}</p>

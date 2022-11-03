@@ -6,22 +6,20 @@ import PhotographGaleryFactory from '../factories/PhotographGaleryFactory';
 
 async function displayHeaderData(){
     const photographHeader = document.querySelector(".photograph-header");
+    const modalPhotographer = document.getElementById('contact_modal');
     const {medias , photograph} = await getMediasPhotographer(getUrlIdParameter());
     const newPhotograph = new PhotographerPageFactory(photograph, "photograph")
-    photographHeader.innerHTML += newPhotograph.renderHeader()
-    galeryMediaPhotograph(medias);
+    photographHeader.innerHTML += newPhotograph.renderHeader();
+    // modalPhotographer.innerHTML += newPhotograph.renderModal();
+    galeryMediaPhotograph(medias, photograph);
 };
 
-async function galeryMediaPhotograph(medias){
-    medias.forEach((media) => {
-        const galeryContainer = document.querySelector(".galery-container");
-        if (media['video']){
-            const galeryElement = new PhotographGaleryFactory(media, "video")
+async function galeryMediaPhotograph(medias, photograph_){
+    const baseUrl = `./assets/photographers/${photograph_.name}`
+    const galeryContainer = document.querySelector(".galery-container");
+    medias.forEach((media ) => {
+            const galeryElement = new PhotographGaleryFactory({...media, url:baseUrl})
             galeryContainer.innerHTML += galeryElement.renderGalery()
-        } else if (media['image']){
-            const galeryElement = new PhotographGaleryFactory(media, "image")
-            galeryContainer.innerHTML += galeryElement.renderGalery()
-        }
 
     });
 };

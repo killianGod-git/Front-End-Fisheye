@@ -13,7 +13,7 @@ export default class PhotographModel{
         <div class="photograph-information">
             <h1 class="name"> ${this.name} </h1>
             <h2 class="location"> ${this.city} ${this.country}</h2>
-            <h3 class="tagline"> ${this.tagline} </h3>
+            <p class="tagline"> ${this.tagline} </p>
         </div>
         <div class="photograph-modal">
             <button class="contact_button" onclick="displayModal()">Contactez-moi</button>

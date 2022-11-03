@@ -1,11 +1,11 @@
 import Image from "../models/image"
 import Video from "../models/video"
 export default class PhotographGaleryFactory{
-    constructor (data, type){
-        if (type === "image"){
+    constructor (data){
+        if (data.image){
             return new Image(data)
         }
-        else if(type === "video"){
+        else if(data.video){
             return new Video(data)
         }
         else{
