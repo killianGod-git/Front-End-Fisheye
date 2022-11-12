@@ -56,10 +56,12 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
+    width: 85%;
+    margin: 0 auto;
 }
 .galery-container article{
-    width: 30%;
-    /* height: 350px; */
+    width: 350px;
+    height: 350px;
     margin-bottom: 2rem;
 }
 .galery-container article .media{
@@ -68,6 +70,10 @@
 .galery-container article .media-information{
     display: flex;
     justify-content: space-between;
+    font-size: 24px;
+}
+.media-information .title-galery, .media-information .likes-galery i{
+    color: #901C1C;
 }
 .galery-container article img, .galery-container article video {
     width: 100%;
@@ -98,7 +104,9 @@
 
 .modal header {
     justify-content: space-between;
+    align-items: flex-start;
     width: 100%;
+    padding: 10px 0;
 }
 
 .modal header img {
@@ -108,7 +116,6 @@
 .modal header h2 {
     font-size: 64px;
     font-weight: normal;
-    text-align: center;
 }
 
 form {
@@ -142,8 +149,9 @@ position: absolute;
 width: 100%;
 top: 0;
 background: #fff;
-height: 100%;
+height: 200%;
 }
+
 
 @media screen and (max-width: 967px) {
     .photograph-header{

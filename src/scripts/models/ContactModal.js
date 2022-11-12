@@ -6,21 +6,21 @@ export default class ContactModal{
         const modal = `
         <div class="modal">
             <header>
-                <h2>Contactez-moi ${this.name}</h2>
+                <h2>Contactez-moi <br> ${this.name}</h2>
                 <img src="assets/icons/close.svg" onclick="closeModal()" />
             </header>
-            <form>
+            <form id="contactPhotograph">
 			    <div>
 				    <label>Prénom</label>
-			    	    <input type="text" />
+			    	    <input type="text" id="prenom" />
                     <label>Nom</label>
-					    <input type="text" />
+					    <input type="text" id="nom"/>
                     <label>Email</label>
-					    <input type="email"/>
+					    <input type="email" id="email"/>
                     <label>Votre message</label>
-	    				<textarea name="message" id="message" cols="100" rows="10"></textarea>
+	    				<textarea cols="100" rows="10" id="message"></textarea>
 		    	</div>
-                <button class="contact_button">Envoyer</button>
+                <button id="btn-submit" class="contact_button" type="submit" onclick="closeModal()"/>Envoyer</button>
 		    </form>
         </div>    
         `

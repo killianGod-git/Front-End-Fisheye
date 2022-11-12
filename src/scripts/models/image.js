@@ -11,8 +11,8 @@ export default class Image extends Media{
                 <img  src="${this.url}/${this.image}" alt="${this.title}">
             </div>
             <div class="media-information">
-                <p> ${this.title}</p>
-                <p> ${this.likes}</p>
+                <p class="title-galery"> ${this.title}</p>
+                <p class="likes-galery"> ${this.likes} <i class="fa-solid fa-heart galery-element-like" onclick="incrementLikes()"></i></p>
             </div>
         </article>
         `

@@ -2,6 +2,7 @@
 import { getMediasPhotographer } from "../services/api";
 import PhotographerPageFactory from "../factories/photographerPageFactory";
 import PhotographGaleryFactory from '../factories/PhotographGaleryFactory';
+import ContactModal from "../models/ContactModal";
 
 
 async function displayHeaderData(){
@@ -10,7 +11,8 @@ async function displayHeaderData(){
     const {medias , photograph} = await getMediasPhotographer(getUrlIdParameter());
     const newPhotograph = new PhotographerPageFactory(photograph, "photograph")
     photographHeader.innerHTML += newPhotograph.renderHeader();
-    // modalPhotographer.innerHTML += newPhotograph.renderModal();
+    const contactObject = new ContactModal(photograph);
+    modalPhotographer.innerHTML += contactObject.renderModal();
     galeryMediaPhotograph(medias, photograph);
 };
 
@@ -31,3 +33,20 @@ function getUrlIdParameter(){
     return Number.parseInt(id);
 };
 displayHeaderData();
+
+function incrementLikes(){
+    const coeur = document.getElementsByClassName('coeur')
+    coeur.addEventListener('click', function (){
+        if (!coeur.className == 'increment'){
+            coeur.classList.toggle('increment')
+        } else {
+            coeur.classList.toggle('increment')
+        }
+    })
+}
+
+// const likesNumber = document.getElementsByClassName('likes-galery')
+// console.log(likesNumber)
+// for (const singleLike of likesNumber){
+//     console.log(singleLike)
+// }

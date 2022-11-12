@@ -13,8 +13,8 @@ export default class Video extends Media{
                 </video>
             </div>
             <div class="media-information" >
-                <p> ${this.title}</p>
-                <p> ${this.likes}</p>
+                <p class="title-galery"> ${this.title}</p>
+                <p class="likes-galery"> ${this.likes} <i class="fa-solid fa-heart coeur"></i></p>
             </div>
         </article>
         `
