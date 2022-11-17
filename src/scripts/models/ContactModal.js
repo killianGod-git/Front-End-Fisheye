@@ -9,7 +9,7 @@ export default class ContactModal{
                 <h2>Contactez-moi <br> ${this.name}</h2>
                 <img src="assets/icons/close.svg" onclick="closeModal()" />
             </header>
-            <form id="contactPhotograph">
+            <form id="contactPhotograph" >
 			    <div>
 				    <label>Prénom</label>
 			    	    <input type="text" id="prenom" />
@@ -20,7 +20,7 @@ export default class ContactModal{
                     <label>Votre message</label>
 	    				<textarea cols="100" rows="10" id="message"></textarea>
 		    	</div>
-                <button id="btn-submit" class="contact_button" type="submit" onclick="closeModal()"/>Envoyer</button>
+                <button id="btn-submit" class="contact_button" type="submit" />Envoyer</button>
 		    </form>
         </div>    
         `

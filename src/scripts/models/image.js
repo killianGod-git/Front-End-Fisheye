@@ -12,7 +12,10 @@ export default class Image extends Media{
             </div>
             <div class="media-information">
                 <p class="title-galery"> ${this.title}</p>
-                <p class="likes-galery"> ${this.likes} <i class="fa-solid fa-heart galery-element-like" onclick="incrementLikes()"></i></p>
+                <div class="likes-section"> 
+                    <span class="likes-galery">${this.likes}</span> 
+                    <i class="fa-solid fa-heart"></i>
+                </div>
             </div>
         </article>
         `
