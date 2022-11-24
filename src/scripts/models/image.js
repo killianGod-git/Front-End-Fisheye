@@ -14,7 +14,7 @@ export default class Image extends Media{
                 <p class="title-galery"> ${this.title}</p>
                 <div class="likes-section"> 
                     <span class="likes-galery">${this.likes}</span> 
-                    <i class="fa-solid fa-heart"></i>
+                    <i class="fa-regular fa-heart"></i>
                 </div>
             </div>
         </article>

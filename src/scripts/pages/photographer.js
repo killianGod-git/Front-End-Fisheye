@@ -19,6 +19,10 @@ async function displayHeaderData(){
     coeur.addEventListener('click', function(e){
         incrementLikes(e)
     })
+    const selectField = document.querySelector('#filter-galery');
+    selectField.addEventListener('change' , (event) => {
+    displaySortMedia(medias, event.target.value)
+ })
 };
 
 async function galeryMediaPhotograph(medias, photograph_){
@@ -49,9 +53,15 @@ function incrementLikes(e){
             let n = Number.parseInt(pHeart.querySelector('.likes-galery').innerHTML)
 
             if (!pHeart.classList.contains('incremented') ){
-                n += 1
+                n += 1;
+                pHeart.classList.toggle('incremented')
+                heart.classList.toggle('fa-solid')
+                heart.classList.toggle('fa-regular')
             } else{
-                n -= 1
+                n -= 1;
+                pHeart.classList.toggle('incremented')
+                heart.classList.toggle('fa-solid')
+                heart.classList.toggle('fa-regular')
             }  
             pHeart.querySelector('.likes-galery').innerHTML = n;   
         }
@@ -68,3 +78,27 @@ function displayLikesTotal( total, price){
     priceSection.innerHTML += price + '€ / jour'
 
 }
+
+
+
+ function displaySortMedia(medias , optionsSort){
+    console.log(medias, optionsSort)
+    switch(optionsSort){
+        case 'popularité':
+            medias.sort((a, b) =>{
+                return a.likes - b.likes
+            })
+            break;
+        case 'date':
+            medias.sort((a, b) =>{
+                return a.date - b.date
+            })
+            break;
+        case  'titre':
+            medias.sort((a, b)=>{
+                return a.localeCompare(b) 
+            })
+            break;
+    }
+    return medias
+ }
