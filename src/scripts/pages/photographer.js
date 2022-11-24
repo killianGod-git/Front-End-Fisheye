@@ -96,7 +96,7 @@ function displayLikesTotal( total, price){
             break;
         case  'titre':
             medias.sort((a, b)=>{
-                return a.localeCompare(b) 
+                return a.title.localeCompare(b.title) 
             })
             break;
     }
