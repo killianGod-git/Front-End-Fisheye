@@ -4,6 +4,7 @@ import PhotographerPageFactory from "../factories/photographerPageFactory";
 import PhotographGaleryFactory from '../factories/PhotographGaleryFactory';
 import ContactModal from "../models/ContactModal";
 import { validate } from "schema-utils";
+import {Lightbox} from "../utils/lightbox"
 
 
 async function displayHeaderData(){
@@ -23,6 +24,7 @@ async function displayHeaderData(){
     selectField.addEventListener('change' , (event) => {
     displaySortMedia(medias, event.target.value)
  })
+
 };
 
 async function galeryMediaPhotograph(medias, photograph_){
@@ -35,6 +37,7 @@ async function galeryMediaPhotograph(medias, photograph_){
             totalLikes += galeryElement.likes
     });
     displayLikesTotal(totalLikes, photograph_.price)
+    Lightbox.init()
 };
 
 function getUrlIdParameter(){
