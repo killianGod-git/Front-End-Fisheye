@@ -6,7 +6,8 @@ import ContactModal from "../models/ContactModal";
 import { validate } from "schema-utils";
 import {Lightbox} from "../utils/lightbox"
 
-
+let baseUrl = '';
+let currentPhotograph = '';
 async function displayHeaderData(){
     const photographHeader = document.querySelector(".photograph-header");
     const modalPhotographer = document.getElementById('contact_modal');
@@ -22,23 +23,33 @@ async function displayHeaderData(){
     })
     const selectField = document.querySelector('#filter-galery');
     selectField.addEventListener('change' , (event) => {
-    displaySortMedia(medias, event.target.value)
- })
-
+        const result = displaySortMedia(medias, event.target.value)
+        displayMedias(result);
+    })
+    Lightbox.init()
 };
 
 async function galeryMediaPhotograph(medias, photograph_){
-    const baseUrl = `./assets/photographers/${photograph_.name}`
-    const galeryContainer = document.querySelector(".galery-container");
+    baseUrl = `./assets/photographers/${photograph_.name}`
+    currentPhotograph = photograph_;
+    displayMedias(medias)
+
+    displayLikesTotal(displayMedias(medias), currentPhotograph.price)
+};
+
+function displayMedias(medias ){
     let totalLikes = 0
+    const galeryContainer = document.querySelector(".galery-container");
+    galeryContainer.innerHTML = '';
     medias.forEach((media ) => {
             const galeryElement = new PhotographGaleryFactory({...media, url:baseUrl})
             galeryContainer.innerHTML += galeryElement.renderGalery()
             totalLikes += galeryElement.likes
     });
-    displayLikesTotal(totalLikes, photograph_.price)
-    Lightbox.init()
-};
+    return totalLikes
+    
+}
+
 
 function getUrlIdParameter(){
     const queryString = window.location.search;
@@ -60,11 +71,13 @@ function incrementLikes(e){
                 pHeart.classList.toggle('incremented')
                 heart.classList.toggle('fa-solid')
                 heart.classList.toggle('fa-regular')
+                UpdateTotalLikes(1)
             } else{
                 n -= 1;
                 pHeart.classList.toggle('incremented')
                 heart.classList.toggle('fa-solid')
                 heart.classList.toggle('fa-regular')
+                UpdateTotalLikes(-1)
             }  
             pHeart.querySelector('.likes-galery').innerHTML = n;   
         }
@@ -76,28 +89,35 @@ const coeur = document.getElementsByClassName('likes-galery')
 function displayLikesTotal( total, price){
     const likeSection = document.getElementById('likes');
     const priceSection = document.getElementById('price');
-
     likeSection.innerHTML += total + ' <i class="fa-solid fa-heart"></i>';
     priceSection.innerHTML += price + '€ / jour'
 
+}
+function UpdateTotalLikes(likes){
+   const likesTotal = document.querySelector('#likes').innerHTML;
+   let n = Number.parseInt(likesTotal)
+   n += likes
+   document.querySelector('#likes').innerHTML = n + ' <i class="fa-solid fa-heart"></i>';
 }
 
 
 
  function displaySortMedia(medias , optionsSort){
-    console.log(medias, optionsSort)
     switch(optionsSort){
-        case 'popularité':
+        case 'Popularité':
             medias.sort((a, b) =>{
                 return a.likes - b.likes
             })
             break;
-        case 'date':
+        case 'Date':
             medias.sort((a, b) =>{
-                return a.date - b.date
+                const Da = new Date(a.date)
+                const Db = new Date(b.date)
+
+                return Da - Db
             })
             break;
-        case  'titre':
+        case  'Titre':
             medias.sort((a, b)=>{
                 return a.title.localeCompare(b.title) 
             })
@@ -105,3 +125,8 @@ function displayLikesTotal( total, price){
     }
     return medias
  }
+
+
+
+
+//  a faire : Finir lightbox voir problème avec la fonction ligne 48 ( like & prix qui se duplique quand tu change le tri ) 
