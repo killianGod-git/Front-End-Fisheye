@@ -1,10 +1,18 @@
+import { FactoryLightbox } from "../factories/renderLightbox";
+
 export  class Lightbox{
     static init(){
         const mediasUrl = Array.from(document.querySelectorAll('.media'));
         const gallery = mediasUrl.map(mediaUrl => mediaUrl.lastElementChild.currentSrc)
         mediasUrl.forEach(mediaUrl => mediaUrl.addEventListener('click', e =>{
-           new Lightbox(e.currentTarget.lastElementChild.currentSrc, gallery)
-
+            
+            let mediasLightbox = new FactoryLightbox(mediaUrl)
+            const dom = document.createElement('div');
+            dom.classList.add('lightbox')
+            dom.innerHTML = mediasLightbox.renderLightbox()
+            // document.body.innerHTML = dom
+            document.body.appendChild(dom)
+            console.log(dom)
         }));
     }
     constructor(url, gallery){
@@ -12,7 +20,6 @@ export  class Lightbox{
        this.gallery = gallery
        this.loadImage(url)
        this.onKeyUp = this.onKeyUp.bind(this)
-        document.body.appendChild(this.element)
         document.addEventListener('keyup', this.onKeyUp)
     }   
     loadImage(url){

@@ -32,9 +32,8 @@ async function displayHeaderData(){
 async function galeryMediaPhotograph(medias, photograph_){
     baseUrl = `./assets/photographers/${photograph_.name}`
     currentPhotograph = photograph_;
-    displayMedias(medias)
-
-    displayLikesTotal(displayMedias(medias), currentPhotograph.price)
+    const t = displayMedias(medias)
+    displayLikesTotal(t, currentPhotograph.price)
 };
 
 function displayMedias(medias ){
@@ -129,4 +128,6 @@ function UpdateTotalLikes(likes){
 
 
 
-//  a faire : Finir lightbox voir problème avec la fonction ligne 48 ( like & prix qui se duplique quand tu change le tri ) 
+
+// refactoriser code finir lightbox voir accesibilité 
+
