@@ -10,9 +10,8 @@ export  class Lightbox{
             const dom = document.createElement('div');
             dom.classList.add('lightbox')
             dom.innerHTML = mediasLightbox.renderLightbox()
-            // document.body.innerHTML = dom
             document.body.appendChild(dom)
-            console.log(dom)
+
         }));
     }
     constructor(url, gallery){
