@@ -6,7 +6,7 @@ export class ImageLightbox {
         this.url = data.lastElementChild.currentSrc
     }
     renderLightbox(){
-        const singleGaleryElement = `
+        const singleLightboxElement = `
         <button class="lightbox_close">fermer</button>
         <a href="#" class="lightbox_prev">précédent</a>
         <br>
@@ -17,7 +17,7 @@ export class ImageLightbox {
         </div>
         `
 
-        return singleGaleryElement
+        return singleLightboxElement
     }
 }
 export class VideoLightbox {
@@ -26,7 +26,7 @@ export class VideoLightbox {
         this.url = data.lastElementChild.currentSrc
     }
     renderLightbox(){
-        const singleGaleryElement = `
+        const singleLightboxElement = `
         <button class="lightbox_close">fermer</button>
         <a href="#" class="lightbox_prev">précédent</a>
         <br>
@@ -35,7 +35,7 @@ export class VideoLightbox {
         <video controls autoplay> <source src="${this.url}" type="video/mp4" >
         </div>
         `
-        return singleGaleryElement
+        return singleLightboxElement
     }
 }
 
@@ -48,7 +48,6 @@ export class FactoryLightbox {
 
         }
         else if(data.lastElementChild.currentSrc.endsWith('.mp4')){
-            console.log('toto')
             return new VideoLightbox(data)
             
         }
