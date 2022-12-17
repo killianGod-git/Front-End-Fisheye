@@ -1,7 +1,16 @@
 import Image from "../models/image"
 import Video from "../models/video"
-export class ImageLightbox {
-    constructor(data){
+export class MediasLightbox {
+    constructor( buildDOM){
+        this.buildDOM = buildDOM
+    }
+    initevent(){
+        this.buildDOM()
+    }
+}
+export class ImageLightbox extends MediasLightbox{
+    constructor(data, buildDOM){
+        super(buildDOM)
         this.title = data.firstElementChild.getAttribute("alt")
         this.url = data.lastElementChild.currentSrc
     }
@@ -20,8 +29,9 @@ export class ImageLightbox {
         return singleLightboxElement
     }
 }
-export class VideoLightbox {
-    constructor(data){
+export class VideoLightbox extends MediasLightbox{
+    constructor(data, buildDOM){
+        super(buildDOM)
         this.title = data.firstElementChild.getAttribute("alt")
         this.url = data.lastElementChild.currentSrc
     }
@@ -40,15 +50,14 @@ export class VideoLightbox {
 }
 
 export class FactoryLightbox {
-    constructor (data){
-
-        console.log(data.lastElementChild.currentSrc)
+    constructor (data, buildDOM){
+console.log(buildDOM)
         if (data.lastElementChild.currentSrc.endsWith('.jpg')){
-            return new ImageLightbox(data)
+            return new ImageLightbox(data, buildDOM)
 
         }
         else if(data.lastElementChild.currentSrc.endsWith('.mp4')){
-            return new VideoLightbox(data)
+            return new VideoLightbox(data, buildDOM)
             
         }
         else{
@@ -58,4 +67,4 @@ export class FactoryLightbox {
 }
 
 
-    
+

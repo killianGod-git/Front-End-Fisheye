@@ -6,16 +6,17 @@ export  class Lightbox{
         const gallery = mediasUrl.map(mediaUrl => mediaUrl.lastElementChild.currentSrc)
         mediasUrl.forEach(mediaUrl => mediaUrl.addEventListener('click', e =>{
             
-            let mediasLightbox = new FactoryLightbox(mediaUrl)
+            let mediasLightbox = new FactoryLightbox(mediaUrl, this.fonction)
             const dom = document.createElement('div');
             dom.classList.add('lightbox')
             dom.innerHTML = mediasLightbox.renderLightbox()
             document.body.appendChild(dom)
+            mediasLightbox.initevent()
 
         }));
     }
     constructor(url, gallery){
-       this.element = this.buildDOM(url)
+        this.fonction = this.initLightboxEvent
        this.gallery = gallery
        this.loadImage(url)
        this.onKeyUp = this.onKeyUp.bind(this)
@@ -64,21 +65,10 @@ export  class Lightbox{
     }
 
 
-    buildDOM (url){
-        const dom = document.createElement('div');
-        dom.classList.add('lightbox')
-        dom.innerHTML = `
-        <button class="lightbox_close">fermer</button>
-        <a href="#" class="lightbox_prev">précédent</a>
-        <br>
-        <a href="#" class="lightbox_next">suivant</a>
-        <div class="lightbox_container">
-        <img src="${url}" alt="" >
-        </div>
-        `
-        dom.querySelector('.lightbox_close').addEventListener('click', this.closeLightbox.bind(this));
-        dom.querySelector('.lightbox_prev').addEventListener('click', this.prevLightbox.bind(this));
-        dom.querySelector('.lightbox_next').addEventListener('click', this.nextLightbox.bind(this))
-        return dom
+    initLightboxEvent = () => {
+console.log('test')
+        doccument.querySelector('.lightbox_close').addEventListener('click', this.closeLightbox.bind(this));
+        doccument.querySelector('.lightbox_prev').addEventListener('click', this.prevLightbox.bind(this));
+        doccument.querySelector('.lightbox_next').addEventListener('click', this.nextLightbox.bind(this))
     }
 }
