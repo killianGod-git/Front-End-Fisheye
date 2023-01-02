@@ -61,9 +61,18 @@ function displayMedias(medias ){
     const galeryContainer = document.querySelector(".galery-container");
     galeryContainer.innerHTML = '';
     medias.forEach((media ) => {
+        console.log(media.id)
+        let articlesNode = document.querySelector("#p"+ media.id + "" )
+        console.log(articlesNode)
+        if (!articlesNode){
             const galeryElement = new PhotographGaleryFactory({...media, url:baseUrl})
             galeryContainer.innerHTML += galeryElement.renderGalery()
             totalLikes += galeryElement.likes
+        } else {
+            console.log("rest")
+            galeryContainer.innerHTML += articlesNode.innerHTML
+        }
+            
     });
     return totalLikes
     

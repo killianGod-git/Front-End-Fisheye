@@ -38,7 +38,7 @@ document.addEventListener('keydown', function(e) {
     return;
   }
 
-  if (e.shiftKey) { 
+  if (e.shiftKey ) { 
     if (document.activeElement === firstFocusableElement) {
       lastFocusableElement.focus();
       e.preventDefault();

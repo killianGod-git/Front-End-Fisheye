@@ -6,7 +6,7 @@ export default class Video extends Media{
     }
     renderGalery(){
         const singleGaleryElement = `
-        <article>
+        <article id=p${this.id}">
             <div class="media">
                 <video src="${this.url}/${this.video}" type="video/mp4">
                 </video>

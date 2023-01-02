@@ -6,7 +6,7 @@ export default class Image extends Media{
     }
     renderGalery(){
         const singleGaleryElement = `
-        <article>
+        <article id="p${this.id}">
             <div class="media">
                 <img  src="${this.url}/${this.image}" alt="${this.title}">
             </div>
