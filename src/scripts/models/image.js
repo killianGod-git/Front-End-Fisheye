@@ -5,8 +5,10 @@ export default class Image extends Media{
         this.image = data.image
     }
     renderGalery(){
-        const singleGaleryElement = `
-        <article id="p${this.id}">
+        const singleGaleryElement = document.createElement('article')
+        singleGaleryElement.setAttribute('id', "p" + this.id + "")
+        const galeryElementContain = `
+        
             <div class="media">
                 <img  src="${this.url}/${this.image}" alt="${this.title}">
             </div>
@@ -17,8 +19,11 @@ export default class Image extends Media{
                     <i class="fa-regular fa-heart"></i>
                 </div>
             </div>
-        </article>
+        
         `
+        singleGaleryElement.innerHTML += galeryElementContain
         return singleGaleryElement
     }
 }
+
+// modifier structure avec createElement

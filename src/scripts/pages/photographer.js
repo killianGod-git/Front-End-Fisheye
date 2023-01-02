@@ -59,18 +59,18 @@ async function galeryMediaPhotograph(medias, photograph_){
 function displayMedias(medias ){
     let totalLikes = 0
     const galeryContainer = document.querySelector(".galery-container");
-    galeryContainer.innerHTML = '';
+    // galeryContainer.innerHTML = '';
     medias.forEach((media ) => {
         console.log(media.id)
         let articlesNode = document.querySelector("#p"+ media.id + "" )
         console.log(articlesNode)
         if (!articlesNode){
             const galeryElement = new PhotographGaleryFactory({...media, url:baseUrl})
-            galeryContainer.innerHTML += galeryElement.renderGalery()
+            galeryContainer.appendChild(galeryElement.renderGalery())
             totalLikes += galeryElement.likes
         } else {
             console.log("rest")
-            galeryContainer.innerHTML += articlesNode.innerHTML
+            galeryContainer.appendChild(articlesNode)
         }
             
     });

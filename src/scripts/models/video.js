@@ -5,8 +5,11 @@ export default class Video extends Media{
         this.video = data.video
     }
     renderGalery(){
-        const singleGaleryElement = `
-        <article id=p${this.id}">
+        const singleGaleryElement = document.createElement('article')
+        singleGaleryElement.setAttribute('id', "p" + this.id + "")
+        
+        const galeryElementContain = `
+        
             <div class="media">
                 <video src="${this.url}/${this.video}" type="video/mp4">
                 </video>
@@ -18,8 +21,9 @@ export default class Video extends Media{
                     <i class="fa-regular fa-heart"></i>
                 </div>
             </div>
-        </article>
+        
         `
+        singleGaleryElement.innerHTML += galeryElementContain
         return singleGaleryElement
     }
 } 
