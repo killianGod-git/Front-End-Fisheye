@@ -29,6 +29,24 @@ async function displayHeaderData(){
         displayMedias(result);
     })
     Lightbox.init()
+    // ecouteur de la ligthbox
+    const container=document.querySelector('.galery-container')
+
+        if(container){
+            container.addEventListener('click',(e)=>{
+                const mediasUrl = Array.from(document.querySelectorAll('.media'));
+                const gallery = mediasUrl.map(mediaUrl => mediaUrl.lastElementChild.currentSrc)
+                const Lcontainer=document.querySelector('.lightbox_container')
+                const node=e.target.tagName.toLowerCase();
+                if(node==='img' || node==='video'){
+                    const dom=document.querySelector('.lightbox')
+                    dom.classList.add('lightbox_active')
+                    const initialIndex=gallery.findIndex(media=>media===e.target.src)
+                    console.log(initialIndex)
+                    const l=new Lightbox(e.target.src, gallery, Lcontainer, initialIndex, node)
+                }
+            })
+        }
 };
 
 async function galeryMediaPhotograph(medias, photograph_){
@@ -59,16 +77,4 @@ function getUrlIdParameter(){
     return Number.parseInt(id);
 };
 displayHeaderData();
-
-
-
-
-
- 
-
-
-
-
-
-// refactoriser code finir lightbox 
 

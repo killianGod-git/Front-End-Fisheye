@@ -8,8 +8,7 @@ export default class Video extends Media{
         const singleGaleryElement = `
         <article>
             <div class="media">
-                <video>
-                    <source src="${this.url}/${this.video}" type="video/mp4">
+                <video src="${this.url}/${this.video}" type="video/mp4">
                 </video>
             </div>
             <div class="media-information" >

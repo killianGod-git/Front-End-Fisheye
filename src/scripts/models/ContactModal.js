@@ -7,7 +7,7 @@ export default class ContactModal{
         <div class="modal">
             <header>
                 <h2>Contactez-moi <br> ${this.name}</h2>
-                <img src="assets/icons/close.svg" onclick="closeModal()" />
+                <a href="#"><img src="assets/icons/close.svg" onclick="closeModal()" /></a>
             </header>
             <form id="contactPhotograph" >
 			    <div>

@@ -1,18 +1,17 @@
 import Image from "../models/image"
 import Video from "../models/video"
 export class MediasLightbox {
-    constructor( buildDOM){
-        this.buildDOM = buildDOM
+    constructor(data){
+        this.title = data.firstElementChild.getAttribute("alt")
+        this.url = data.lastElementChild.currentSrc
     }
     initevent(){
         this.buildDOM()
     }
 }
 export class ImageLightbox extends MediasLightbox{
-    constructor(data, buildDOM){
-        super(buildDOM)
-        this.title = data.firstElementChild.getAttribute("alt")
-        this.url = data.lastElementChild.currentSrc
+    constructor(data){
+        super(data)
     }
     renderLightbox(){
         const singleLightboxElement = `
@@ -30,10 +29,8 @@ export class ImageLightbox extends MediasLightbox{
     }
 }
 export class VideoLightbox extends MediasLightbox{
-    constructor(data, buildDOM){
-        super(buildDOM)
-        this.title = data.firstElementChild.getAttribute("alt")
-        this.url = data.lastElementChild.currentSrc
+    constructor(data){
+        super(data)
     }
     renderLightbox(){
         const singleLightboxElement = `
@@ -50,14 +47,14 @@ export class VideoLightbox extends MediasLightbox{
 }
 
 export class FactoryLightbox {
-    constructor (data, buildDOM){
-console.log(buildDOM)
+    constructor (data){
+        console.log(buildDOM)
         if (data.lastElementChild.currentSrc.endsWith('.jpg')){
-            return new ImageLightbox(data, buildDOM)
+            return new ImageLightbox(data)
 
         }
         else if(data.lastElementChild.currentSrc.endsWith('.mp4')){
-            return new VideoLightbox(data, buildDOM)
+            return new VideoLightbox(data)
             
         }
         else{
