@@ -22,16 +22,12 @@ function closeModal() {
     modal.style.display = "none";
 }
 function accessibilityModal(){
-    const  focusableElements =
-    'button, [href], input,  [tabindex]:not([tabindex="-1"])';
-    const modal = document.querySelector('#contact_modal'); 
-
-const firstFocusableElement = modal.querySelectorAll(focusableElements)[0]; 
-const focusableContent = modal.querySelectorAll(focusableElements);
-const lastFocusableElement = focusableContent[focusableContent.length - 1]; 
-
-
-document.addEventListener('keydown', function(e) {
+  const  focusableElements = 'button, [href], input,  [tabindex]:not([tabindex="-1"])';
+  const modal = document.querySelector('#contact_modal'); 
+  const firstFocusableElement = modal.querySelectorAll(focusableElements)[0]; 
+  const focusableContent = modal.querySelectorAll(focusableElements);
+  const lastFocusableElement = focusableContent[focusableContent.length - 1]; 
+  document.addEventListener('keydown', function(e) {
   let isTabPressed = e.key === 'Tab';
 
   if (!isTabPressed) {

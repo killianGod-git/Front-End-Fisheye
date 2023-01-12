@@ -16,7 +16,7 @@ export default class PhotographModel{
             <p class="tagline"> ${this.tagline} </p>
         </div>
         <div class="photograph-modal">
-            <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+            <button class="contact_button" onclick="displayModal()" aria-label="Bouton qui ouvre la modal de contact">Contactez-moi</button>
         </div>
         <div class="photograph-portrait">
             <img class="portrait" src="./assets/photographers/portrait/${this.portrait}" alt="${this.name}">

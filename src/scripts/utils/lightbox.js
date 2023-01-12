@@ -1,5 +1,3 @@
-import { FactoryLightbox } from "../factories/renderLightbox";
-
 export  class Lightbox{
     static init(){
         // Initialisation
@@ -17,7 +15,6 @@ export  class Lightbox{
         document.body.appendChild(dom)
     }
     constructor(url, gallery, Lcontainer, initialIndex, node){
-        console.log(url)
         this.gallery = gallery
         this.container=Lcontainer
         this.onKeyUp = this.onKeyUp.bind(this)
@@ -31,7 +28,7 @@ export  class Lightbox{
         if(node==="img"){
             return `<img src=${url} />`
         }else{
-            return `<video controls autoplay src='${url}'></video>`
+            return `<video controls src='${url}'></video>`
         }
     }
     onKeyUp(e){

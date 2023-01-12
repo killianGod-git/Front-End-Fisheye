@@ -79,7 +79,7 @@ main{
 .media-information .title-galery, .media-information .likes-galery i{
     color: #901C1C;
 }
-.galery-container article img, .galery-container article video {
+.galery-container article .media img, .galery-container article .media video {
     width: 100%;
     object-fit: cover;
     height: 100%;

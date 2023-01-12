@@ -23,6 +23,12 @@ async function displayHeaderData(){
     coeur.addEventListener('click', function(e){
         incrementLikes(e)
     })
+    // event keypress Enter (refactoriser)
+    coeur.addEventListener('keypress', function(e){
+        console.log(e.key)
+        if (e.key == 'Enter')
+        incrementLikes(e)
+    })
     const selectField = document.querySelector('#filter-galery');
     selectField.addEventListener('change' , (event) => {
         const result = displaySortMedia(medias, event.target.value)
@@ -42,10 +48,27 @@ async function displayHeaderData(){
                     const dom=document.querySelector('.lightbox')
                     dom.classList.add('lightbox_active')
                     const initialIndex=gallery.findIndex(media=>media===e.target.src)
-                    console.log(initialIndex)
+
                     const l=new Lightbox(e.target.src, gallery, Lcontainer, initialIndex, node)
                 }
             })
+
+            // event keypress Enter (refactoriser)
+            container.addEventListener('keypress', function (e) {
+                if (e.key === 'Enter') {
+                    const mediasUrl = Array.from(document.querySelectorAll('.media'));
+                    const gallery = mediasUrl.map(mediaUrl => mediaUrl.lastElementChild.currentSrc)
+                    const Lcontainer=document.querySelector('.lightbox_container')
+                    const node=e.target.tagName.toLowerCase();
+                    if(node==='img' || node==='video'){
+                        const dom=document.querySelector('.lightbox')
+                        dom.classList.add('lightbox_active')
+                        const initialIndex=gallery.findIndex(media=>media===e.target.src)
+
+                        const l=new Lightbox(e.target.src, gallery, Lcontainer, initialIndex, node)
+                    }
+                }
+            });
         }
 };
 
@@ -61,15 +84,12 @@ function displayMedias(medias ){
     const galeryContainer = document.querySelector(".galery-container");
     // galeryContainer.innerHTML = '';
     medias.forEach((media ) => {
-        console.log(media.id)
         let articlesNode = document.querySelector("#p"+ media.id + "" )
-        console.log(articlesNode)
         if (!articlesNode){
             const galeryElement = new PhotographGaleryFactory({...media, url:baseUrl})
             galeryContainer.appendChild(galeryElement.renderGalery())
             totalLikes += galeryElement.likes
         } else {
-            console.log("rest")
             galeryContainer.appendChild(articlesNode)
         }
             

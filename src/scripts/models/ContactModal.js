@@ -4,23 +4,23 @@ export default class ContactModal{
     }
     renderModal(){
         const modal = `
-        <div class="modal">
+        <div class="modal" aria-label="Contact me ${this.name}" >
             <header>
                 <h2>Contactez-moi <br> ${this.name}</h2>
-                <a href="#"><img src="assets/icons/close.svg" onclick="closeModal()" /></a>
+                <a href="#" aria-label="Close contact form" onclick="closeModal()"><img src="assets/icons/close.svg"  /></a>
             </header>
             <form id="contactPhotograph" >
 			    <div>
-				    <label>Prénom</label>
-			    	    <input type="text" id="prenom" />
-                    <label>Nom</label>
-					    <input type="text" id="nom"/>
-                    <label>Email</label>
-					    <input type="email" id="email"/>
-                    <label>Votre message</label>
-	    				<textarea cols="100" rows="10" id="message"></textarea>
+				    <label for="prenom" aria-label="First name">Prénom</label>
+			    	    <input type="text" id="prenom"  />
+                    <label for="nom" aria-label="Last name">Nom</label>
+					    <input type="text" id="nom" />
+                    <label for="email" aria-label="Email">Email</label>
+					    <input type="email" id="email" />
+                    <label for="message" aria-label="Your message">Votre message</label>
+	    				<textarea cols="100" rows="10" id="message"  ></textarea>
 		    	</div>
-                <button id="btn-submit" class="contact_button" type="submit" />Envoyer</button>
+                <button id="btn-submit" class="contact_button" type="submit" aria-label="Send" />Envoyer</button>
 		    </form>
         </div>    
         `

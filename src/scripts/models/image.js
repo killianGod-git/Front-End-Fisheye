@@ -9,14 +9,14 @@ export default class Image extends Media{
         singleGaleryElement.setAttribute('id', "p" + this.id + "")
         const galeryElementContain = `
         
-            <div class="media">
-                <img  src="${this.url}/${this.image}" alt="${this.title}">
+            <div href="#" class="media">
+                <img  src="${this.url}/${this.image}" alt="${this.title}" tabindex="0">
             </div>
             <div class="media-information">
                 <p class="title-galery"> ${this.title}</p>
                 <div class="likes-section"> 
                     <span class="likes-galery">${this.likes}</span> 
-                    <i class="fa-regular fa-heart"></i>
+                    <i class="fa-regular fa-heart" aria-label=”likes” tabindex="0"></i>
                 </div>
             </div>
         

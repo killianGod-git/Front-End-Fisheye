@@ -10,15 +10,14 @@ export default class Video extends Media{
         
         const galeryElementContain = `
         
-            <div class="media">
+            <div href="#" class="media">
                 <video src="${this.url}/${this.video}" type="video/mp4">
-                </video>
             </div>
             <div class="media-information" >
                 <p class="title-galery"> ${this.title}</p>
                 <div class="likes-section"> 
                     <span class="likes-galery">${this.likes}</span> 
-                    <i class="fa-regular fa-heart"></i>
+                    <i class="fa-regular fa-heart" aria-label=”likes” tabindex="0"></i>
                 </div>
             </div>
         
