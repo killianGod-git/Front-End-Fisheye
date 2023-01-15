@@ -7,6 +7,7 @@ import { validate } from "schema-utils";
 import {Lightbox} from "../utils/lightbox"
 import { displaySortMedia } from "../utils/sortMedias";
 import { displayLikesTotal, incrementLikes } from "../utils/likesFunctions";
+import {accessibilityLightbox} from '../utils/lightbox'
 
 let baseUrl = '';
 let currentPhotograph = '';
@@ -23,9 +24,7 @@ async function displayHeaderData(){
     coeur.addEventListener('click', function(e){
         incrementLikes(e)
     })
-    // event keypress Enter (refactoriser)
     coeur.addEventListener('keypress', function(e){
-        console.log(e.key)
         if (e.key == 'Enter')
         incrementLikes(e)
     })
@@ -40,37 +39,31 @@ async function displayHeaderData(){
 
         if(container){
             container.addEventListener('click',(e)=>{
-                const mediasUrl = Array.from(document.querySelectorAll('.media'));
-                const gallery = mediasUrl.map(mediaUrl => mediaUrl.lastElementChild.currentSrc)
-                const Lcontainer=document.querySelector('.lightbox_container')
-                const node=e.target.tagName.toLowerCase();
-                if(node==='img' || node==='video'){
-                    const dom=document.querySelector('.lightbox')
-                    dom.classList.add('lightbox_active')
-                    const initialIndex=gallery.findIndex(media=>media===e.target.src)
-
-                    const l=new Lightbox(e.target.src, gallery, Lcontainer, initialIndex, node)
-                }
+                openLighbox(e, medias)
             })
-
-            // event keypress Enter (refactoriser)
             container.addEventListener('keypress', function (e) {
                 if (e.key === 'Enter') {
-                    const mediasUrl = Array.from(document.querySelectorAll('.media'));
-                    const gallery = mediasUrl.map(mediaUrl => mediaUrl.lastElementChild.currentSrc)
-                    const Lcontainer=document.querySelector('.lightbox_container')
-                    const node=e.target.tagName.toLowerCase();
-                    if(node==='img' || node==='video'){
-                        const dom=document.querySelector('.lightbox')
-                        dom.classList.add('lightbox_active')
-                        const initialIndex=gallery.findIndex(media=>media===e.target.src)
-
-                        const l=new Lightbox(e.target.src, gallery, Lcontainer, initialIndex, node)
-                    }
+                    openLighbox(e, medias)
                 }
             });
         }
 };
+function openLighbox(e, medias){
+    const mediasUrl = Array.from(document.querySelectorAll('.media'));
+    const gallery = mediasUrl.map(mediaUrl => mediaUrl.lastElementChild.currentSrc)
+    const Lcontainer=document.querySelector('.lightbox_container')
+    const node=e.target.tagName.toLowerCase();
+    if(node==='img' || node==='video'){
+        const id = e.target.getAttribute('id')
+        const data = medias.find(m => m.id == id)
+        const dom=document.querySelector('.lightbox')
+        dom.classList.add('lightbox_active')
+        const initialIndex=gallery.findIndex(media=>media===e.target.src)
+
+        const l=new Lightbox(e.target.src, gallery, Lcontainer, initialIndex, node, data)
+    }
+    accessibilityLightbox()
+}
 
 async function galeryMediaPhotograph(medias, photograph_){
     baseUrl = `./assets/photographers/${photograph_.name}`
@@ -82,7 +75,6 @@ async function galeryMediaPhotograph(medias, photograph_){
 function displayMedias(medias ){
     let totalLikes = 0
     const galeryContainer = document.querySelector(".galery-container");
-    // galeryContainer.innerHTML = '';
     medias.forEach((media ) => {
         let articlesNode = document.querySelector("#p"+ media.id + "" )
         if (!articlesNode){

@@ -11,7 +11,7 @@ export default class Video extends Media{
         const galeryElementContain = `
         
             <div href="#" class="media">
-                <video src="${this.url}/${this.video}" type="video/mp4">
+                <video id="${this.id}" src="${this.url}/${this.video}" type="video/mp4">
             </div>
             <div class="media-information" >
                 <p class="title-galery"> ${this.title}</p>

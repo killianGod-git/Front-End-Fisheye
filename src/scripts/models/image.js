@@ -10,7 +10,7 @@ export default class Image extends Media{
         const galeryElementContain = `
         
             <div href="#" class="media">
-                <img  src="${this.url}/${this.image}" alt="${this.title}" tabindex="0">
+                <img id="${this.id}" src="${this.url}/${this.image}" alt="${this.title}" tabindex="0">
             </div>
             <div class="media-information">
                 <p class="title-galery"> ${this.title}</p>

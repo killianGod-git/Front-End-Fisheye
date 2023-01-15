@@ -2,10 +2,10 @@ export  class Lightbox{
     static init(){
         // Initialisation
         const lightBoxZone=`
-            <button class="lightbox_close"></button>
-            <a href="#" class="lightbox_prev"></a>
+            <button class="lightbox_close" aria-label="close dialog"></button>
+            <a href="#" class="lightbox_prev" aria-label="previous image"></a>
             <br>
-            <a href="#" class="lightbox_next"></a>
+            <a href="#" class="lightbox_next" aria-label="next image"></a>
             <div class="lightbox_container">
                 <div>Content lightbox</div>
             </div>`
@@ -14,7 +14,8 @@ export  class Lightbox{
         dom.innerHTML = lightBoxZone
         document.body.appendChild(dom)
     }
-    constructor(url, gallery, Lcontainer, initialIndex, node){
+    constructor(url, gallery, Lcontainer, initialIndex, node, data){
+        this.data = data 
         this.gallery = gallery
         this.container=Lcontainer
         this.onKeyUp = this.onKeyUp.bind(this)
@@ -26,14 +27,21 @@ export  class Lightbox{
     }   
     loadImage(url, node){
         if(node==="img"){
-            return `<img src=${url} />`
+            return `<img src=${url} alt="${this.data.title}"/>
+            <h2> ${this.data.title}</h2>`
         }else{
-            return `<video controls src='${url}'></video>`
+            return `<video controls src='${url}'></video>
+            <h2> ${this.data.title}</h2>`
         }
     }
     onKeyUp(e){
         if (e.key === 'Escape'){ 
             this.closeLightbox(e)
+        } else if (e.key === 'ArrowRight'){
+            this.prevLightbox(e)
+        }
+        else if (e.key === 'ArrowLeft'){
+            this.nextLightbox(e)
         }
     }
     closeLightbox( e ){
@@ -72,3 +80,30 @@ export  class Lightbox{
         return (url.endsWith(".mp4")?"video":"img")
     }
 }
+export function accessibilityLightbox(){
+    const  focusableElements = 'button, [href], [tabindex]:not([tabindex="-1"])';
+    const lightbox = document.querySelector('.lightbox'); 
+    const firstFocusableElement = lightbox.querySelectorAll(focusableElements)[0]; 
+    const focusableContent = lightbox.querySelectorAll(focusableElements);
+    const lastFocusableElement = focusableContent[focusableContent.length - 1]; 
+    document.addEventListener('keydown', function(e) {
+    let isTabPressed = e.key === 'Tab';
+  
+    if (!isTabPressed) {
+      return;
+    }
+  
+    if (e.shiftKey ) { 
+      if (document.activeElement === firstFocusableElement) {
+        lastFocusableElement.focus();
+        e.preventDefault();
+      }
+    } else {
+      if (document.activeElement === lastFocusableElement) { 
+        firstFocusableElement.focus(); 
+        e.preventDefault();
+      }
+    }
+  })
+  firstFocusableElement.focus()
+};
