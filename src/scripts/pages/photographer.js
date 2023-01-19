@@ -2,8 +2,7 @@
 import { getMediasPhotographer } from "../services/api";
 import PhotographerPageFactory from "../factories/photographerPageFactory";
 import PhotographGaleryFactory from '../factories/PhotographGaleryFactory';
-import ContactModal from "../models/ContactModal";
-import { validate } from "schema-utils";
+import ContactModal from "../models/ContactModal"
 import {Lightbox} from "../utils/lightbox"
 import { displaySortMedia } from "../utils/sortMedias";
 import { displayLikesTotal, incrementLikes } from "../utils/likesFunctions";
@@ -60,7 +59,7 @@ function openLighbox(e, medias){
         dom.classList.add('lightbox_active')
         const initialIndex=gallery.findIndex(media=>media===e.target.src)
 
-        const l=new Lightbox(e.target.src, gallery, Lcontainer, initialIndex, node, data)
+        const l=new Lightbox(e.target.src, gallery, Lcontainer, initialIndex, node, medias)
     }
     accessibilityLightbox()
 }

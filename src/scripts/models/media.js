@@ -8,4 +8,7 @@ export default class Media  {
         this.price = data.price
         this.url = data.url
     }
+    renderGalery(){
+        return `<p> Type non valide </p>`
+    }
 }

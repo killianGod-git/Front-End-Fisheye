@@ -14,33 +14,34 @@ export  class Lightbox{
         dom.innerHTML = lightBoxZone
         document.body.appendChild(dom)
     }
-    constructor(url, gallery, Lcontainer, initialIndex, node, data){
-        this.data = data 
+    constructor(url, gallery, Lcontainer, initialIndex, node, medias){
+        this.medias = medias 
         this.gallery = gallery
+        
         this.container=Lcontainer
         this.onKeyUp = this.onKeyUp.bind(this)
         document.addEventListener('keyup', this.onKeyUp)
         this.index=initialIndex
         this.mediaType=node;
-        Lcontainer.innerHTML=this.loadImage(url, node)
+        Lcontainer.innerHTML=this.loadImage(url, node, medias[this.index])
         this.initLightboxEvent()
     }   
-    loadImage(url, node){
+    loadImage(url, node, data){
         if(node==="img"){
-            return `<img src=${url} alt="${this.data.title}"/>
-            <h2> ${this.data.title}</h2>`
+            return `<img src=${url} alt="${data.title}"/>
+            <h2> ${data.title}</h2>`
         }else{
             return `<video controls src='${url}'></video>
-            <h2> ${this.data.title}</h2>`
+            <h2> ${data.title}</h2>`
         }
     }
     onKeyUp(e){
         if (e.key === 'Escape'){ 
             this.closeLightbox(e)
-        } else if (e.key === 'ArrowRight'){
+        } else if (e.key === 'ArrowLeft'){
             this.prevLightbox(e)
         }
-        else if (e.key === 'ArrowLeft'){
+        else if (e.key === 'ArrowRight'){
             this.nextLightbox(e)
         }
     }
@@ -57,7 +58,8 @@ export  class Lightbox{
             this.index=0
         }
         const url=this.gallery[this.index]
-        this.container.innerHTML=this.loadImage(url, this.typeMedia(url))
+        const data = this.medias[this.index]
+        this.container.innerHTML=this.loadImage(url, this.typeMedia(url), data)
     }
     prevLightbox( e ){
         e.preventDefault()
@@ -66,7 +68,9 @@ export  class Lightbox{
             this.index=this.gallery.length-1
         }
         const url=this.gallery[this.index]
-        this.container.innerHTML=this.loadImage(url, this.typeMedia(url))
+        const data = this.medias[this.index]
+        console.log(data)
+        this.container.innerHTML=this.loadImage(url, this.typeMedia(url), data)
         
     }
 

@@ -1,4 +1,5 @@
 import Image from "../models/image"
+import Media from "../models/media"
 import Video from "../models/video"
 export default class PhotographGaleryFactory{
     constructor (data){
@@ -9,7 +10,7 @@ export default class PhotographGaleryFactory{
             return new Video(data)
         }
         else{
-            throw 'erreur'
+            return new Media(data)
         }
     }
 }

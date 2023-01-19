@@ -17,7 +17,7 @@ export default class Video extends Media{
                 <p class="title-galery"> ${this.title}</p>
                 <div class="likes-section"> 
                     <span class="likes-galery">${this.likes}</span> 
-                    <i class="fa-regular fa-heart" aria-label=”likes” tabindex="0"></i>
+                    <i class="fa-regular fa-heart" aria-label=”nombre de j'aime ${this.likes}” tabindex="0"></i>
                 </div>
             </div>
         

@@ -28,8 +28,10 @@ const coeur = document.getElementsByClassName('likes-galery')
 export function displayLikesTotal( total, price){
 const likeSection = document.getElementById('likes');
 const priceSection = document.getElementById('price');
-likeSection.innerHTML += total + ' <i class="fa-solid fa-heart"></i>';
+likeSection.innerHTML += total + ' <i class="fa-solid fa-heart"></i>'
+likeSection.setAttribute('aria-label' , 'nombre de j\'aime total ' + total + ' j\'aime' )
 priceSection.innerHTML += price + '€ / jour'
+priceSection.setAttribute('aria-label' , 'tarif ' + price + '€/jour' )
 
 }
 export function UpdateTotalLikes(likes){
