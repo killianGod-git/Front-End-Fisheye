@@ -1,11 +1,42 @@
 #contact_modal {
     display: none;
 }
-
+main{
+    width: 90%;
+    margin: 0 auto;
+}
 .photograph-header {
     background-color: #FAFAFA;
-    height: 300px;
-    margin: 0 100px;
+    margin: 0;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 2rem;
+}
+.photograph-information{
+    flex-basis: 40%;
+}
+.photograph-information h1{
+    margin: 20px 0 10px 0;
+    color: #D3573C;
+    font-size: 47px;
+}
+.photograph-information h2{
+    margin: 0;
+    font-size: 17px;
+    color: #901C1C;
+}
+.photograph-modal{
+    flex-basis: 40%;
+}
+.photograph-portrait{
+    flex-basis: 20%;
+}
+.photograph-portrait .portrait{
+    object-fit: cover;
+    border-radius: 50%;
+    height: 200px;
+    width: 200px;
 }
 
 .contact_button {
@@ -20,8 +51,47 @@
     border-radius: 5px;
     cursor: pointer;
 }
+.title-galery{
+    margin: 0;
+}
 
+/* galery */
+.galery-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
+    /* margin: 0 auto; */
+}
+.galery-container article{
+    width: 350px;
+    height: 350px;
+    margin-bottom: 2rem;
+}
+.galery-container article .media{
+    height: 300px;
+}
+.galery-container article .media-information{
+    display: flex;
+    justify-content: space-between;
+    font-size: 24px;
+}
+.media-information .title-galery, .media-information .likes-galery i{
+    color: #901C1C;
+}
+.galery-container article .media img, .galery-container article .media video {
+    width: 100%;
+    object-fit: cover;
+    height: 100%;
+}
+
+/* form */
 .modal {
+    position: absolute;
+    z-index: 9;
+    top: 3em;
+    left: 50%;
+    transform: translateX(-50%);
     border-radius: 5px;
     background-color: #DB8876;
     width: 50%;
@@ -32,10 +102,15 @@
     padding: 35px;
     margin: auto;
 }
+.modal h2{
+    color: #000000;
+}
 
 .modal header {
     justify-content: space-between;
+    align-items: flex-start;
     width: 100%;
+    padding: 10px 0;
 }
 
 .modal header img {
@@ -45,7 +120,6 @@
 .modal header h2 {
     font-size: 64px;
     font-weight: normal;
-    text-align: center;
 }
 
 form {
@@ -68,9 +142,147 @@ form div {
     margin-bottom: 26px;
 }
 
-form input {
+form input , form textarea{
     width: 100%;
     height: 68px;
     border: none;
     border-radius: 5px;
+}
+#contact_modal{
+position: absolute;
+width: 100%;
+top: 0;
+background: #fff;
+height: 200%;
+}
+#bloc-tarif{
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    right: 20px;
+    background: #DB8876;
+    padding: 10px;
+    gap: 20px;
+}
+#filter-section{
+    display: flex;
+    margin: 3rem 0;
+    gap: 5px;
+}
+#filter-galery{
+    background-color: #901C1C;
+    color: #fff;
+    padding: 1rem ;
+    border-radius: 5px;
+    border: none;
+}
+.likes-section{
+    color: #901C1C;
+}
+.lightbox{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: #fff;
+    z-index: 10;
+    display: none;
+}
+.lightbox_active{
+    display: block;
+}
+.lightbox_container{
+    width: 50%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+}
+.lightbox_container img, .lightbox_container video{
+    width: 100%;
+    max-height: 90vh;
+    object-fit: contain;
+}
+.lightbox_close{
+    background: url(../assets/images/close.svg) center center / 100% 100%;
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    right: 30px;
+    top: 30px;
+    border: none;
+}
+.lightbox_prev{
+    background: url(../assets/images/chevron.svg) center center / 100% 100%;
+    width: 30px;
+    height: 30px;
+    display: block;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 30px;
+}
+.lightbox_next{
+    background: url(../assets/images/chevron.svg) center center / 100% 100%;
+    width: 30px;
+    height: 30px;
+    display: block;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%) rotate(180deg);
+    right: 30px;
+}
+
+@media screen and (max-width: 967px) {
+    .photograph-header{
+        flex-direction: column;
+        margin: 0 0 30px 0;
+    }
+    .photograph-information{
+        order: 2;
+        text-align: center;
+    }
+    .photograph-modal{
+        order: 3;
+    }
+    .photograph-portrait{
+        order: 1;
+    }
+
+    .galery-container article{
+        width: 47%;
+    }
+
+    .modal{
+        width: 75%;
+    }
+    .modal header {
+        flex-direction: row;
+        height: 30px;
+        margin: 0 0 10px 0;
+    }
+    .modal header h2 {
+        font-size: 30px;
+        margin: 0;
+    }
+    .modal header img{
+        width: 5%;
+        min-width: 20px;
+    }
+    form label {
+        font-size: 25px;
+    }
+    form input , form textarea{
+        height: 40px;
+    }
+    .contact_button{
+        height: 60px;
+    }
+}
+@media screen and (max-width: 768px) {
+    .galery-container article{
+        width: 95%;
+    }
 }

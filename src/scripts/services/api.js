@@ -21,7 +21,7 @@ export async function getMediasPhotographer(photographerId){
     let mediaPhotographers = dataPhotofraphersPage.media;
     let medias = mediaPhotographers.filter( mediaPhotographers => mediaPhotographers.photographerId === photographerId );
     let photographers = dataPhotofraphersPage.photographers;
-    let photograph = photographers.filter( photographers => photographers.id === photographerId);
+    let photograph = photographers.find( photographers => photographers.id === photographerId);
     return {medias , photograph};
 }
 
